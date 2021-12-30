@@ -1,29 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 long long T,base,A,B,bit;
+char trans(int x){
+	if(x >= 10)
+		return (x-10)+'A';
+	else
+		return x+'¡a¡b¢@¢@¢@¢@¢@¢@¢@¢²0';
+	
+}
 void case1(){
-	vector<char> a(bit,'0'),b(bit,'0');
-	int n=bit-1;
-	while(A){
-		int x=A%base;
-		char c=x+'0';
-		a[n--]=c;
-		A/=base;
-	}
-	n=bit-1;
-	while(B){
-		int x=B%base;
-		char c=x+'0';
-		b[n--]=c;
-		B/=base;
-	}
-	for(int i=0;i<bit;i++){
-		cout <<a[i];
-	}
-	cout <<'\n';
-	for(int i=0;i<bit;i++){
-		cout <<b[i];
-	}
+	long long C=A+B; 
+	if(C>pow(2,bit-1)-1)
+		cout <<"·¸¦ì\n";
+	string s;
+	while(C){
+		int x=C%base;
+		char c=trans(x);
+	} 
 } 
 void case2(){
 	
@@ -81,9 +74,9 @@ int main(){
 	
 	switch(T){
 		case 1:
-			T1();
+			T1(); 
 			break;
 			
 	
 	}
-} 
+}  
