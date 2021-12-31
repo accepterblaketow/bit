@@ -10,7 +10,7 @@ char trans(int x){
 }
 void case1(){
 	long long C=A+B; 
-	if(C>pow(2,bit-1)-1){
+	if(C>pow(base,bit-1)-1){
 		cout <<"結果為:";
 		cout <<"溢位\n";
 		return;
@@ -33,7 +33,7 @@ void case2(){
 	if(C>0)
 		sb=0;
 	else
-		sb=1;
+		sb=base-1;
 	string s;
 	C=abs(C);
 	while(C){
@@ -50,7 +50,8 @@ void case2(){
 }
 void case3(){
 	long long C=A+B; 
-	if(C>pow(2,bit-1)-1){
+	if(C>pow(base,bit-1)-1){
+		cout <<"結果為:";
 		cout <<"溢位\n";
 		return;
 	} 
@@ -72,12 +73,13 @@ void case4(){
 	if(C>0)
 		sb=0;
 	else
-		sb=1;
+		sb=base-1;
 	string s;
-	C=abs(C);
+	if(C<0) 
+		C=pow(base,bit-1)-1+C;
 	while(C){
 		int x=(C%base);
-		char c=trans((base-1)-x);
+		char c=trans(x);
 		s=c+s;
 		C/=base;
 	}
@@ -89,7 +91,8 @@ void case4(){
 }
 void case5(){
 	long long C=A+B; 
-	if(C<-(pow(2,bit-1)-1)){
+	if(C<-(pow(base,bit-1)-1)){
+		cout <<"結果為:";
 		cout <<"溢位\n";
 		return;
 	} 
@@ -102,19 +105,20 @@ void case5(){
 		C/=base;
 	}
 	cout <<"結果為:";
-	cout << 1;
+	cout << base-1;
 	cout.width(bit-1);
 	cout.fill('0');
 	cout << s <<'\n';
 }
 void case6(){
 	long long C=A+B; 
-	if(C<-pow(2,bit)){
+	if(C<-pow(base,bit)){
+		cout <<"結果為:";
 		cout <<"溢位\n";
 		return;
 	} 
 	string s;
-	C=pow(2,bit-1)+C;
+	C=pow(base,bit-1)+C;
 	while(C){
 		int x=C%base;
 		char c=trans(x);
@@ -122,7 +126,7 @@ void case6(){
 		C/=base;
 	}
 	cout <<"結果為:";
-	cout << 1;
+	cout << base-1;
 	cout.width(bit-1);
 	cout.fill('0');
 	cout << s <<'\n';
@@ -133,9 +137,10 @@ void case7(){
 	if(C>0)
 		sb=0;
 	else
-		sb=1;
+		sb=base-1;
 	string s;
-	C=pow(2,bit-1)+C;
+	if(C<0)
+		C=pow(base,bit-1)+C;
 	while(C){
 		int x=(C%base);
 		char c=trans(x);
